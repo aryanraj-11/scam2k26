@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        :root {
+            --pink-bg: #ffe4e9;
+            --dark-pink: #ffafcc;
+            --heart-red: #ff4d6d;
+            --text-color: #5e3023;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--pink-bg);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+
+        .screen { display: none; }
+        .active { display: block; animation: fadeIn 0.8s ease; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 { font-size: 1.8rem; margin-bottom: 1.5rem; }
+        
+        button {
+            background-color: var(--dark-pink);
+            border: none;
+            padding: 12px 25px;
+            margin: 10px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        button:hover {
+            background-color: var(--heart-red);
+            transform: scale(1.05);
+        }
+
+        .gift-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .gift-box {
+            border: 2px dashed var(--dark-pink);
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .letter {
+            background: #fff9e6;
+            padding: 20px;
+            border: 1px solid #ddd;
+            text-align: left;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .qr-placeholder {
+            width: 150px;
+            height: 150px;
+            background: #eee;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div id="screen1" class="screen active">
+            <img src="https://cdn-icons-png.flaticon.com/512/3590/3590204.png" width="100" alt="Hearts">
+            <h1>Hey there,<br>Will you be my Valentine?</h1>
+            <button onclick="nextScreen(2)">YES OF COURSE</button>
+            <button id="noBtn" onmouseover="moveNo()">NO THANK YOU</button>
+        </div>
+
+        <div id="screen2" class="screen">
+            <h1>Yay, you said yes!</h1>
+            <p>I made all these for you:</p>
+            <div class="gift-grid">
+                <div class="gift-box" onclick="nextScreen(3)">🎁<br>Gift 1</div>
+                <div class="gift-box" onclick="nextScreen(4)">🎁<br>Gift 2</div>
+                <div class="gift-box" onclick="nextScreen(5)">🎁<br>Gift 3</div>
+            </div>
+        </div>
+
+        <div id="screen3" class="screen">
+            <h1>A Virtual Bouquet</h1>
+            <img src="https://cdn-icons-png.flaticon.com/512/2926/2926754.png" width="150">
+            <p>"You will forever be my only option."</p>
+            <button onclick="nextScreen(2)">Back to Gifts</button>
+        </div>
+
+        <div id="screen4" class="screen">
+            <h3>Words from my Heart</h3>
+            <div class="letter">
+                To the love of my life, you make every day brighter. I am so lucky to have you. I love you wholeheartedly...
+            </div>
+            <button onclick="nextScreen(2)">Back to Gifts</button>
+        </div>
+
+        <div id="screen5" class="screen">
+            <h1>A Song for You</h1>
+            <div class="qr-placeholder">
+                [Insert QR Code Link]
+            </div>
+            <p>Scan this to hear how I feel.</p>
+            <button onclick="nextScreen(1)">Restart ❤️</button>
+        </div>
+    </div>
+
+    <script>
+        function nextScreen(screenNum) {
+            // Hide all screens
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            // Show the target screen
+            document.getElementById('screen' + screenNum).classList.add('active');
+        }
+
+        // Fun feature: Make the "No" button run away!
+        function moveNo() {
+            const btn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 50);
+            btn.style.position = 'absolute';
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+    </script>
+</body>
+</html>
