@@ -73,19 +73,51 @@
             transform: scale(1.05);
         }
 
-        .gift-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 10px;
-            margin-top: 20px;
-        }
+       .gift-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+}
 
-        .gift-box {
-            border: 2px dashed var(--dark-pink);
-            padding: 15px;
-            border-radius: 10px;
-            cursor: pointer;
-        }
+.gift-box {
+    background: rgba(255, 255, 255, 0.6);
+    border: 2px solid var(--dark-pink);
+    padding: 20px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 15px rgba(255, 175, 204, 0.2);
+}
+
+/* The Magic: Card pops up when you hover over it */
+.gift-box:hover {
+    transform: translateY(-10px) scale(1.05);
+    background: white;
+    box-shadow: 0 15px 30px rgba(255, 77, 109, 0.3);
+    border-color: var(--heart-red);
+}
+
+.gift-icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+.gift-box:hover .gift-icon {
+    transform: rotate(15deg) scale(1.2);
+}
+
+.gift-text {
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
 
         .letter {
             background: #fff9e6;
@@ -118,15 +150,27 @@
             <button id="noBtn" onmouseover="moveNo()">NO THANK YOU</button>
         </div>
 
-        <div id="screen2" class="screen">
-            <h1>Yay, you said yes!</h1>
-            <p>I made all these for you:</p>
-            <div class="gift-grid">
-                <div class="gift-box" onclick="nextScreen(3)">🎁<br>Gift 1</div>
-                <div class="gift-box" onclick="nextScreen(4)">🎁<br>Gift 2</div>
-                <div class="gift-box" onclick="nextScreen(5)">🎁<br>Gift 3</div>
-            </div>
+       <div id="screen2" class="screen">
+    <h1 style="font-family: 'Playfair Display', serif;">Yay, you said yes!</h1>
+    <p style="font-family: 'Dancing Script', cursive; font-size: 1.4rem;">I made these special surprises for you:</p>
+    
+    <div class="gift-grid">
+        <div class="gift-box" onclick="nextScreen(3)">
+            <span class="gift-icon">🌹</span>
+            <span class="gift-text">For You</span>
         </div>
+        
+        <div class="gift-box" onclick="nextScreen(4)">
+            <span class="gift-icon">💌</span>
+            <span class="gift-text">My Heart</span>
+        </div>
+        
+        <div class="gift-box" onclick="nextScreen(5)">
+            <span class="gift-icon">🎵</span>
+            <span class="gift-text">Our Song</span>
+        </div>
+    </div>
+</div>
 
         <div id="screen3" class="screen">
             <h1>A Cute Bouquet For My Cute Valentine</h1>
