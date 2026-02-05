@@ -13,29 +13,39 @@
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--pink-bg);
-            color: var(--text-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            text-align: center;
-        }
+    margin: 0;
+    padding: 0;
+    /* This adds your photo */
+    background-image: url("background.jpg"); 
+    
+    /* This makes sure the photo covers the whole screen */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 
-        .container {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            max-width: 500px;
-            width: 90%;
-            position: relative;
-        }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+}
 
+.container {
+    /* Glassmorphism Effect: Makes the card readable over any photo */
+    background: rgba(255, 255, 255, 0.8); 
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    
+    padding: 2.5rem;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
         .screen { display: none; }
         .active { display: block; animation: fadeIn 0.8s ease; }
 
